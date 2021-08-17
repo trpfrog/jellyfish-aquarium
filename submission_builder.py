@@ -43,5 +43,5 @@ if __name__ == '__main__':
         files = os.listdir(src_folder)
         for file in files:
             if file.endswith('.pde') and file != f'{source_folder_name}.pde':
-                f.write('\n')
+                f.write('\n\n')
                 append_src(f, src_folder + '/' + file)
