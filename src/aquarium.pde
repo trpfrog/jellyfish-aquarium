@@ -15,14 +15,18 @@ class Aquarium implements Drawable {
     private void drawFrame() {
         fill(#000000);
         pushMatrix();
-            translate(0, -AQUARIUM_HEIGHT / 2, 0);
+            translate(0, 0, 0);
             box(AQUARIUM_WIDTH + FRAME_WEIGHT, 10, AQUARIUM_DEPTH + FRAME_WEIGHT);
         popMatrix();
         int[] dx = {1, 1, -1, -1};
         int[] dz = {1, -1, -1, 1};
         for (int i = 0; i < 4; i++) {
             pushMatrix();
-                translate(dx[i] * AQUARIUM_WIDTH / 2, 0, dz[i] * AQUARIUM_DEPTH / 2);
+                translate(
+                    dx[i] * AQUARIUM_WIDTH / 2, 
+                    AQUARIUM_HEIGHT / 2, 
+                    dz[i] * AQUARIUM_DEPTH / 2
+                );
                 box(FRAME_WEIGHT, AQUARIUM_HEIGHT, FRAME_WEIGHT);
             popMatrix();
         }
@@ -32,7 +36,7 @@ class Aquarium implements Drawable {
             pushMatrix();
                 translate(
                     dx[i] * AQUARIUM_WIDTH / 2,
-                    AQUARIUM_HEIGHT / 2,
+                    AQUARIUM_HEIGHT,
                     dz[i] * AQUARIUM_DEPTH / 2
                 );
                 box(
