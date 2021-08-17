@@ -40,15 +40,15 @@ class Aquarium implements Drawable {
                     FRAME_WEIGHT,
                     AQUARIUM_DEPTH * abs(dx[i]) + FRAME_WEIGHT
                 );
-                translate(0, -AQUARIUM_HEIGHT / 2, 0);
-                pushStyle();
-                    fill(#555555, 100);
-                    box(
-                        AQUARIUM_WIDTH * abs(dz[i]),
-                        AQUARIUM_HEIGHT - FRAME_WEIGHT,
-                        AQUARIUM_DEPTH * abs(dx[i])
-                    );
-                popStyle();
+                // translate(0, -AQUARIUM_HEIGHT / 2, 0);
+                // pushStyle();
+                //     fill(#555555, 100);
+                //     box(
+                //         AQUARIUM_WIDTH * abs(dz[i]),
+                //         AQUARIUM_HEIGHT - FRAME_WEIGHT,
+                //         AQUARIUM_DEPTH * abs(dx[i])
+                //     );
+                // popStyle();
             popMatrix();
         }
     }
