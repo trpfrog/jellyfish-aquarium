@@ -27,7 +27,7 @@ def append_src(to_file, from_file: str):
             
 
 if __name__ == '__main__':
-    project_name = 'viscomp-final'
+    project_name = 'viscomp_final'
     source_folder_name = 'src'
     src_folder = './' + source_folder_name
     out_folder = './' + project_name
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     for extension in ['png', 'jpg']:
         copy_files(src_folder, out_folder, extension)
 
-    # combine all pde files into viscomp-final.pde
+    # combine all pde files into viscomp_final.pde
     with open(f'{out_folder}/{project_name}.pde', 'w') as f:
         append_src(f, f'{src_folder}/{source_folder_name}.pde')
         files = os.listdir(src_folder)
