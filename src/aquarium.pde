@@ -6,6 +6,15 @@ class Aquarium implements Drawable {
     private int frameHeight = 4;
     protected int waterHeight = (int)(aquariumHeight * 0.8);
 
+    public Aquarium() {}
+
+    public Aquarium(int width, int height, int depth) {
+        aquariumWidth = width;
+        aquariumHeight = height;
+        aquariumDepth = depth;
+        waterHeight = (int)(aquariumHeight * 0.8);
+    }
+
     @Override
     public void draw() {
         pushStyle();
