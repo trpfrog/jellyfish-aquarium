@@ -1,14 +1,30 @@
 class Seaweed extends AquaticLife {
 
-    private final float weedHeight = 20;
-    private final float weedWidth = 5;
-    private final float swingAmplitude = 1;
-    private final int swingPoints = 4;
+    private final float weedHeight;
+    private final float weedWidth;
+    private final float swingAmplitude;
+    private final int swingPoints;
+    private final float swingPeriodMillis;
+
+    public Seaweed() {
+        this(5, 20);
+    }
+
+    public Seaweed(float w, float h) {
+        this(w, h, 1, 4, 16000);
+    }
+
+    public Seaweed(float w, float h, float swingAmp, int swingPoints, float swingPeriodMillis) {
+        this.weedHeight = h;
+        this.weedWidth = w;
+        this.swingAmplitude = swingAmp;
+        this.swingPoints = swingPoints;
+        this.swingPeriodMillis = swingPeriodMillis;
+    }
 
     @Override
     public void draw() {
         pushStyle();
-        fill(#008000);
         beginShape(QUADS);
             final long t = millis();
             final float dy = 0.5;
@@ -34,7 +50,7 @@ class Seaweed extends AquaticLife {
         float period = weedHeight / (swingPoints + 1);
         return swingAmplitude 
                     * sin(y / period * TWO_PI) 
-                    * sin(ms / 8000.0 * TWO_PI)
+                    * sin(ms / swingPeriodMillis * 2 * TWO_PI)
                     * sqrt(1 - y / weedHeight);
     }
 }
