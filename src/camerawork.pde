@@ -49,7 +49,7 @@ void mousePressed(MouseEvent e) {
     if(e.getButton() == LEFT) {
         cameraWork.onMousePressed();
     } else if(e.getButton() == RIGHT) {
-        final int padding = 10;
+        final int padding = 20;
         aquarium.getFood().appear(
             random(-aquarium.getWidth()/2 + padding, aquarium.getWidth()/2 - padding),
             aquarium.getHeight() * 2,

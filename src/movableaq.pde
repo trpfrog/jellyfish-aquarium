@@ -1,7 +1,7 @@
 abstract class MovableAquaticLife extends AquaticLife implements Movable {
 
     private PVector dir = new PVector(0, 1, 0);
-    private float speed = 0.1;
+    private float speed = 0.5;
 
     @Override
     public void move(Aquarium aq) {
@@ -11,7 +11,6 @@ abstract class MovableAquaticLife extends AquaticLife implements Movable {
             float xzDist = (float)Math.hypot(
                 foodLocation.x - p.x, foodLocation.z - p.z
             );
-            // println(xzDist + " " + abs(foodLocation.y - p.y));
             if(xzDist < 2 && 0 < p.y - foodLocation.y && p.y - foodLocation.y < 15) {
                 aq.getFood().eat();
             }
@@ -34,7 +33,7 @@ abstract class MovableAquaticLife extends AquaticLife implements Movable {
         }
         dir.normalize();
         p.add(PVector.mult(dir, speed));
-        final int padding = 10;
+        final int padding = 12;
 
         p.x = constrain(p.x, -aq.getWidth()/2 + padding, aq.getWidth()/2 - padding);
         p.y = constrain(p.y, aq.getSandHeight() + padding, aq.getWaterHeight() - padding);
