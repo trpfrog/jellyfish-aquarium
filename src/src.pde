@@ -8,18 +8,22 @@ void setup() {
 }
 
 void draw() {
-    translate(width / 2, height / 2);
-    cameraWork.update();
+    pushMatrix();
+        translate(width / 2, height / 2);
+        cameraWork.update();
 
-    scale(2);
-    lights();
-    spotLight(130, 100, 180, 0, 1000, 0, 0, -1, 0, PI, 2);
+        lights();
+        spotLight(150, 130, 160, 0, 1000, 0, 0, -1, 0, PI, 2);
 
-    translate(0, -70, 0);
-    background(#202030);
-    drawFloor(100);
-    aquarium.draw();
-    drawStand(100);
+        translate(0, -70, 0);
+        background(#202030);
+        scale(2);
+        drawFloor(100);
+        aquarium.draw();
+        drawStand(100);
+    popMatrix();
+}
+
 }
 
 void drawStand(int standHeight) {
