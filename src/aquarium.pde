@@ -17,12 +17,25 @@ class Aquarium extends Drawable {
         aquariumWidth = width;
         aquariumHeight = height;
         aquariumDepth = depth;
-        waterHeight = (int)(aquariumHeight * 0.8);
+        waterHeight = (int)(aquariumHeight * 0.85);
         sandHeight = (int)(aquariumHeight * 0.1);
 
-        Seaweed sw = new Seaweed();
-        sw.setLocation(0, 0, 0);
-        seaObjects.add(sw);
+        for(int i = 0; i < 30; i++) {
+            AquaticLife sw = new Seaweed();
+            sw.setLocation(0, 0, 0);
+            seaObjects.add(sw);
+        }
+
+        color[] jellycolor = {#ffa8ff, #a8ffff, #a8ffa8, #ffffa8};
+        for(int i = 0; i < 4; i++) {
+            AquaticLife jf = new Jellyfish(jellycolor[i]);
+            jf.setLocation(
+                aquariumWidth * random(0, 1) - aquariumWidth / 2, 
+                waterHeight * random(0, 1), 
+                aquariumDepth * random(0, 1) - aquariumDepth / 2
+            );
+            seaObjects.add(jf);
+        }
     }
 
     @Override
@@ -30,8 +43,6 @@ class Aquarium extends Drawable {
         pushStyle();
             hint(ENABLE_DEPTH_TEST);
             drawSand();
-            hint(DISABLE_DEPTH_TEST);
-            fillWithWater();
             for(AquaticLife life : seaObjects) {
                 pushMatrix();
                     translate(life.getX(), life.getY(), life.getZ());
@@ -41,21 +52,25 @@ class Aquarium extends Drawable {
                     ((Movable)life).move(this);
                 }
             }
+            hint(DISABLE_DEPTH_TEST);
+            fillWithWater();
             hint(ENABLE_DEPTH_TEST);
             drawFrame();
         popStyle();
     }
 
     private void fillWithWater() {
-        fill(#7FCCE3, 50);
+        pushStyle();
+        fill(#7FCCE3, 10);
         pushMatrix();
-            translate(0, waterHeight / 2, 0);
+            translate(0, (waterHeight + sandHeight) / 2, 0);
             box(
                 aquariumWidth - frameThickness, 
-                waterHeight, 
+                waterHeight - sandHeight, 
                 aquariumDepth - frameThickness
             );
         popMatrix();
+        popStyle();
     }
 
     private void drawFrame() {
