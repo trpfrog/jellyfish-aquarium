@@ -27,7 +27,7 @@ class Seaweed extends AquaticLife {
         pushStyle();
         beginShape(QUADS);
             final long t = millis();
-            final float dy = 0.5;
+            final float dy = 0.2;
             for (float y = 0; y + dy < weedHeight; y += dy) {
                 float x1 = 0.5 * getWidthAt(y);
                 float x2 = 0.5 * getWidthAt(y + dy);
