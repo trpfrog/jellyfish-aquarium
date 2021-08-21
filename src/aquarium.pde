@@ -8,6 +8,7 @@ class Aquarium extends Drawable {
     protected int sandHeight;
 
     ArrayList<AquaticLife> seaObjects = new ArrayList<AquaticLife>();
+    Drawable house, car;
 
     public Aquarium() {
         this(180, 100, 100);
@@ -35,6 +36,9 @@ class Aquarium extends Drawable {
             seaObjects.add(sw);
         }
 
+        house = new House();
+        car = new Car();
+
         color[] jellycolor = {#ffa8ff, #a8ffff, #a8ffa8, #ffffa8};
         for(int i = 0; i < 4; i++) {
             AquaticLife jf = new Jellyfish(jellycolor[i]);
@@ -51,16 +55,18 @@ class Aquarium extends Drawable {
     public void draw() {
         pushStyle();
             hint(ENABLE_DEPTH_TEST);
-            drawSand();
-            for(AquaticLife life : seaObjects) {
-                pushMatrix();
-                    translate(life.getX(), life.getY(), life.getZ());
-                    life.draw();
-                popMatrix();
-                if(life instanceof Movable) {
-                    ((Movable)life).move(this);
+                drawSand();
+                for(AquaticLife life : seaObjects) {
+                    pushMatrix();
+                        translate(life.getX(), life.getY(), life.getZ());
+                        life.draw();
+                    popMatrix();
+                    if(life instanceof Movable) {
+                        ((Movable)life).move(this);
+                    }
                 }
-            }
+                drawHouse();
+                drawCar();
             hint(DISABLE_DEPTH_TEST);
             fillWithWater();
             hint(ENABLE_DEPTH_TEST);
@@ -130,6 +136,27 @@ class Aquarium extends Drawable {
                 // popStyle();
             popMatrix();
         }
+    }
+
+    private void drawHouse() {
+        pushMatrix();
+            translate(aquariumWidth * 0.25, sandHeight * 0.8, aquariumDepth * 0.2);
+            rotateY(1.5 * PI);
+            rotateX(-0.1 * PI);
+            rotateZ(-0.1 * PI);
+            house.draw(10);
+        popMatrix();
+    }
+
+    private void drawCar() {
+        pushMatrix();
+            rotateY(PI);
+            translate(aquariumWidth * 0.25, sandHeight * 0.8, aquariumDepth * 0.3);
+            rotateY(PI);
+            rotateX(0.2 * PI);
+            rotateZ(0.2 * PI);
+            car.draw(10);
+        popMatrix();
     }
 
     private void drawSand() {
