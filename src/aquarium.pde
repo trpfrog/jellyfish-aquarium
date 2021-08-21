@@ -52,7 +52,7 @@ class Aquarium extends Drawable {
     private void drawFrame() {
         fill(#000000);
         pushMatrix();
-            translate(0, 0, 0);
+            translate(0, -5, 0);
             box(aquariumWidth + frameHeight, 10, aquariumDepth + frameHeight);
         popMatrix();
         int[] dx = {1, 1, -1, -1};
