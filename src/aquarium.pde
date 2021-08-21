@@ -40,12 +40,12 @@ class Aquarium extends Drawable {
     }
 
     private void fillWithWater() {
-        fill(#7FCCE3, 100);
+        fill(#7FCCE3, 50);
         pushMatrix();
             translate(0, waterHeight / 2, 0);
             box(
                 aquariumWidth - frameHeight, 
-                waterHeight - frameHeight, 
+                waterHeight, 
                 aquariumDepth - frameHeight
             );
         popMatrix();
