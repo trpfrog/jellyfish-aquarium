@@ -96,6 +96,31 @@ class Aquarium extends Drawable {
         }
     }
 
+    private void drawSand() {
+        fill(#dcd3b2);
+        pushMatrix();
+            translate(0, sandHeight / 2, 0);
+            box(
+                aquariumWidth - frameHeight, 
+                sandHeight, 
+                aquariumDepth - frameHeight
+            );
+        popMatrix();
+        noFill();
+        PVector translateVec = new PVector(
+            -(aquariumWidth / 2 - frameHeight / 2), 
+            sandHeight + 0.01, 
+            -(aquariumDepth / 2 - frameHeight / 2)
+        );
+        repeatTile(
+            translateVec, 
+            aquariumWidth - frameHeight,
+            aquariumDepth - frameHeight,
+            SAND_TEXTURE,
+            40
+        );
+    }
+
     public int getWidth() {
         return aquariumWidth;
     }
