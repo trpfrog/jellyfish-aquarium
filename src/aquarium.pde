@@ -35,8 +35,11 @@ class Aquarium extends Drawable {
             for(AquaticLife life : seaObjects) {
                 pushMatrix();
                     translate(life.getX(), life.getY(), life.getZ());
-                    life.draw(3);
+                    life.draw();
                 popMatrix();
+                if(life instanceof Movable) {
+                    ((Movable)life).move(this);
+                }
             }
             hint(ENABLE_DEPTH_TEST);
             drawFrame();
