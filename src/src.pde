@@ -9,8 +9,7 @@ void setup() {
 
 void draw() {
     translate(width / 2, height / 2);
-    rotateX(map(mouseY, 0, height, TWO_PI, 0));
-    rotateY(map(-mouseX, 0, width, -PI, PI));
+    cameraWork.update();
 
     scale(2);
     lights();
