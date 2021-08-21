@@ -28,7 +28,9 @@ class Aquarium extends Drawable {
     @Override
     public void draw() {
         pushStyle();
-            drawFrame();
+            hint(ENABLE_DEPTH_TEST);
+            drawSand();
+            hint(DISABLE_DEPTH_TEST);
             fillWithWater();
             for(AquaticLife life : seaObjects) {
                 pushMatrix();
@@ -36,6 +38,8 @@ class Aquarium extends Drawable {
                     life.draw(3);
                 popMatrix();
             }
+            hint(ENABLE_DEPTH_TEST);
+            drawFrame();
         popStyle();
     }
 
