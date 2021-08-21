@@ -28,7 +28,7 @@ abstract class MovableAquaticLife extends AquaticLife implements Movable {
         p.add(PVector.mult(dir, speed));
         final int padding = 10;
         p.x = constrain(p.x, -aq.getWidth()/2 + padding, aq.getWidth()/2 - padding);
-        p.y = constrain(p.y, padding, aq.getWaterHeight() - padding);
+        p.y = constrain(p.y, aq.getSandHeight() + padding, aq.getWaterHeight() - padding);
         p.z = constrain(p.z, -aq.getDepth()/2 + padding, aq.getDepth()/2 - padding);
         this.setLocation(p.x, p.y, p.z);
     }
