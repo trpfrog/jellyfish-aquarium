@@ -1,7 +1,7 @@
 Aquarium aquarium = new Aquarium();
 
 void setup() {
-    size(800, 450, P3D);
+    size(1060, 600, P3D);
     setupTextures();
     hint(DISABLE_DEPTH_TEST);
     noStroke();

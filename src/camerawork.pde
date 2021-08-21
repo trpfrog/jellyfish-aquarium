@@ -3,7 +3,7 @@ CameraWork cameraWork = new CameraWork();
 class CameraWork {
     private PVector prevCursorPosition = new PVector(0, 0);
     private PVector currentCursorPosition = new PVector(0, 0);
-    private float x = 3, y = -400, ratio = 1;
+    private float x = 2, y = -287, ratio = 1;
 
     public void update() {
         if(prevCursorPosition.dist(currentCursorPosition) < 1) {
