@@ -3,7 +3,7 @@ class Jellyfish extends MovableAquaticLife {
     private final float jellyfishHeadHeight = 10;
     private final float jellyfishHeadRadiusMax = 10;
     private final float jellyfishPeriod = 10000;
-    private Seaweed foot = new Seaweed(4, 14, 1, 3, jellyfishPeriod);
+    private Seaweed foot = new Seaweed(4, 16, 1, 3, jellyfishPeriod);
     private final color jellyfishColor;
     private final int jellyfishAlpha;
 
