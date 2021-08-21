@@ -115,4 +115,18 @@ class Aquarium extends Drawable {
     public int getSandHeight() {
         return sandHeight;
     }
+
+    public boolean addFood(int x, int y, int z) {
+        if(this.hasFood()) return false;
+
+        return true;
+    }
+
+    public boolean hasFood() {
+        return this.getFoodLocation() != null;
+    }
+
+    public PVector getFoodLocation() {
+        return null;
+    }
 }
