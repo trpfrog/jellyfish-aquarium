@@ -1,7 +1,9 @@
-public PImage SAND_TEXTURE;
+public PImage SAND_TEXTURE, MARBLE_TEXTURE, FLOOR_TEXTURE;
 
 void setupTextures() {
     SAND_TEXTURE = loadImage("sand.jpg");
+    MARBLE_TEXTURE = loadImage("marble.jpg");
+    FLOOR_TEXTURE = loadImage("floor.jpg");
 }
 
 void repeatTile(PVector start, float w, float d, PImage texture, final int tileSize) {
