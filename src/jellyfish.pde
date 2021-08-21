@@ -19,9 +19,13 @@ class Jellyfish extends MovableAquaticLife {
         fill(#a9ceec, 120);
         beginShape(QUADS);
         int dtheta = 24;
-        for(int y1 = 0; y1 < jellyfishHeadHeight - 0.5; y1 += 1) {
+        
+        for(int y1 = 0; y1 < jellyfishHeadHeight; y1 += 1) {
+
             float y2 = y1 + 1;
-            boolean isHead = y1 == (int)(jellyfishHeadHeight - 1 + 0.001);
+            final float eps = 0.01;
+            boolean isHead = y1 == (int)(jellyfishHeadHeight - 1 + eps);
+
             for(int i = 0; i < 360; i += dtheta) {
                 pushMatrix();
                 float theta1 = radians(i);
@@ -29,7 +33,9 @@ class Jellyfish extends MovableAquaticLife {
                 float r1 = getRadius(y1, ms);
                 float r2 = getRadius(y2, ms);
                 vertex(r1 * cos(theta1), y1, r1 * sin(theta1));
+
                 if(isHead) {
+                    // Cheat the pointy part of the head
                     r2 = r2 * 0.5;
                     vertex(r2 * cos(theta1), (y1 + y2) / 2, r2 * sin(theta1));
                     vertex(r2 * cos(theta2), (y1 + y2) / 2, r2 * sin(theta2));
@@ -37,6 +43,7 @@ class Jellyfish extends MovableAquaticLife {
                     vertex(r2 * cos(theta1), y2, r2 * sin(theta1));
                     vertex(r2 * cos(theta2), y2, r2 * sin(theta2));
                 }
+
                 vertex(r1 * cos(theta2), y1, r1 * sin(theta2));
                 popMatrix();
             }
