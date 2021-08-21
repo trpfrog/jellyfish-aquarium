@@ -3,7 +3,7 @@ class Aquarium extends Drawable {
     private int aquariumWidth = 180;
     private int aquariumHeight = 100;
     private int aquariumDepth = 100;
-    private int frameHeight = 4;
+    private int frameThickness = 2;
     protected int waterHeight;
     protected int sandHeight;
 
@@ -48,9 +48,9 @@ class Aquarium extends Drawable {
         pushMatrix();
             translate(0, waterHeight / 2, 0);
             box(
-                aquariumWidth - frameHeight, 
+                aquariumWidth - frameThickness, 
                 waterHeight, 
-                aquariumDepth - frameHeight
+                aquariumDepth - frameThickness
             );
         popMatrix();
     }
@@ -58,11 +58,11 @@ class Aquarium extends Drawable {
     private void drawFrame() {
         fill(40);
         pushMatrix();
-            translate(0, -frameHeight/2, 0);
+            translate(0, -frameThickness/2, 0);
             box(
-                aquariumWidth + frameHeight, 
-                frameHeight, 
-                aquariumDepth + frameHeight
+                aquariumWidth + frameThickness, 
+                frameThickness, 
+                aquariumDepth + frameThickness
             );
         popMatrix();
         int[] dx = {1, 1, -1, -1};
@@ -74,7 +74,7 @@ class Aquarium extends Drawable {
                     aquariumHeight / 2, 
                     dz[i] * aquariumDepth / 2
                 );
-                box(frameHeight, aquariumHeight, frameHeight);
+                box(frameThickness, aquariumHeight, frameThickness);
             popMatrix();
         }
         dx = new int[] {1, -1, 0, 0};
@@ -87,9 +87,9 @@ class Aquarium extends Drawable {
                     dz[i] * aquariumDepth / 2
                 );
                 box(
-                    aquariumWidth * abs(dz[i]) + frameHeight,
-                    frameHeight,
-                    aquariumDepth * abs(dx[i]) + frameHeight
+                    aquariumWidth * abs(dz[i]) + frameThickness,
+                    frameThickness,
+                    aquariumDepth * abs(dx[i]) + frameThickness
                 );
                 // Draw window
                 // translate(0, -aquariumHeight / 2, 0);
@@ -97,7 +97,7 @@ class Aquarium extends Drawable {
                 //     fill(#555555, 100);
                 //     box(
                 //         aquariumWidth * abs(dz[i]),
-                //         aquariumHeight - frameHeight,
+                //         aquariumHeight - frameThickness,
                 //         aquariumDepth * abs(dx[i])
                 //     );
                 // popStyle();
@@ -110,21 +110,21 @@ class Aquarium extends Drawable {
         pushMatrix();
             translate(0, sandHeight / 2, 0);
             box(
-                aquariumWidth - frameHeight, 
+                aquariumWidth - frameThickness, 
                 sandHeight, 
-                aquariumDepth - frameHeight
+                aquariumDepth - frameThickness
             );
         popMatrix();
         noFill();
         PVector translateVec = new PVector(
-            -(aquariumWidth / 2 - frameHeight / 2), 
+            -(aquariumWidth / 2 - frameThickness / 2), 
             sandHeight + 0.01, 
-            -(aquariumDepth / 2 - frameHeight / 2)
+            -(aquariumDepth / 2 - frameThickness / 2)
         );
         repeatTile(
             translateVec, 
-            aquariumWidth - frameHeight,
-            aquariumDepth - frameHeight,
+            aquariumWidth - frameThickness,
+            aquariumDepth - frameThickness,
             SAND_TEXTURE,
             40
         );
@@ -148,6 +148,10 @@ class Aquarium extends Drawable {
 
     public int getSandHeight() {
         return sandHeight;
+    }
+
+    public int getFrameThickness() {
+        return frameThickness;
     }
 
     public boolean addFood(int x, int y, int z) {
