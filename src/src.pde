@@ -1,9 +1,10 @@
 Aquarium aquarium = new Aquarium();
+long startTime = millis();
 
 void setup() {
     size(1060, 600, P3D);
     setupTextures();
-    hint(DISABLE_DEPTH_TEST);
+    
     noStroke();
 }
 
@@ -22,8 +23,18 @@ void draw() {
         aquarium.draw();
         drawStand(100);
     popMatrix();
+    drawHowToUse();
 }
 
+void drawHowToUse() {
+    hint(DISABLE_DEPTH_TEST);
+    textSize(20);
+    long alpha = 15000 - (millis() - startTime);
+    if(alpha < 0) return;
+    fill(255, 255, 255, (int)constrain(alpha, 0, 255));
+    final int padding = 40;
+    text("Drag to change the direction of the camera", padding, height - padding - 30);
+    text("Turn the mouse wheel to zoom in/out", padding, height - padding);
 }
 
 void drawStand(int standHeight) {
