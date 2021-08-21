@@ -12,9 +12,12 @@ void draw() {
     rotateX(map(mouseY, 0, height, TWO_PI, 0));
     rotateY(map(-mouseX, 0, width, -PI, PI));
 
-    translate(0, -100, 0);
-    background(255);
     scale(2);
+    lights();
+    spotLight(130, 100, 180, 0, 1000, 0, 0, -1, 0, PI, 2);
+
+    translate(0, -70, 0);
+    background(#202030);
     drawFloor(100);
     aquarium.draw();
     drawStand(100);
