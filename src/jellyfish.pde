@@ -4,19 +4,33 @@ class Jellyfish extends MovableAquaticLife {
     private final float jellyfishHeadRadiusMax = 10;
     private final float jellyfishPeriod = 10000;
     private Seaweed foot = new Seaweed(4, 14, 1, 3, jellyfishPeriod);
+    private final color jellyfishColor;
+    private final int jellyfishAlpha;
 
     public Jellyfish() {
+        this(#a9ceec);
+    }
+
+    public Jellyfish(color c) {
+        this(c, 140);
+    }
+
+    public Jellyfish(color c, int alpha) {
+        jellyfishColor = c;
+        jellyfishAlpha = alpha;
     }
 
     @Override
     public void draw() {
-        drawHead();
-        drawFeet();
+        pushStyle();
+            fill(jellyfishColor, jellyfishAlpha);
+            drawHead();
+            drawFeet();
+        popStyle();
     }
 
     private void drawHead() {
         float ms = millis();
-        fill(#a9ceec, 120);
         beginShape(QUADS);
         int dtheta = 24;
         
@@ -52,7 +66,6 @@ class Jellyfish extends MovableAquaticLife {
     }
 
     private void drawFeet() {
-        fill(#a9ceec, 120);
         final float ms = millis();
         pushMatrix();
         translate(0, jellyfishHeadHeight * 0.4, 0);
