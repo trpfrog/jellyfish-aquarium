@@ -5,6 +5,8 @@ class Seaweed extends AquaticLife {
     private final float swingAmplitude;
     private final int swingPoints;
     private final float swingPeriodMillis;
+    private color weedColor = 0;
+    private boolean colorSet = false;
 
     public Seaweed() {
         this(5, 20);
@@ -25,6 +27,9 @@ class Seaweed extends AquaticLife {
     @Override
     public void draw() {
         pushStyle();
+        if(colorSet) {
+            fill(weedColor);
+        }
         beginShape(QUADS);
             final long t = millis();
             final float dy = 0.2;
@@ -52,5 +57,10 @@ class Seaweed extends AquaticLife {
                     * sin(y / period * TWO_PI) 
                     * sin(ms / swingPeriodMillis * 2 * TWO_PI)
                     * sqrt(1 - y / weedHeight);
+    }
+
+    public void setColor(color c) {
+        colorSet = true;
+        weedColor = c;
     }
 }
