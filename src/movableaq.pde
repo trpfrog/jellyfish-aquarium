@@ -8,25 +8,27 @@ abstract class MovableAquaticLife extends AquaticLife implements Movable {
         PVector p = this.getLocation();
         if(aq.hasFood()) {
             dir = aq.getFoodLocation();
-            float d = dir.dist(p);
             dir.sub(p);
-            dir.div(d);
-        } else if(Math.random() < 0.05) {
+        } else if(Math.random() < 0.2) {
             float theta = acos(dir.z);
             float phi = 0;
-            if(cos(theta) > 1e-3) {
-                phi = acos(dir.x / sin(theta));
+            if(Math.hypot(dir.x, dir.y) > 1e-2) {
+                phi = (dir.y / abs(dir.y)) * acos(dir.x / (float)Math.hypot(dir.x, dir.y));
             }
 
             theta += randomGaussian() / 10;
             phi += randomGaussian() / 10;
 
-            dir.x = sin(theta) * cos(phi);
-            dir.y = sin(theta) * sin(phi);
-            dir.z = cos(theta);
+            if(!Float.isNaN(theta) && !Float.isNaN(phi)) {
+                dir.x = sin(theta) * cos(phi);
+                dir.y = sin(theta) * sin(phi);
+                dir.z = cos(theta);
+            }
         }
+        dir.normalize();
         p.add(PVector.mult(dir, speed));
         final int padding = 10;
+
         p.x = constrain(p.x, -aq.getWidth()/2 + padding, aq.getWidth()/2 - padding);
         p.y = constrain(p.y, aq.getSandHeight() + padding, aq.getWaterHeight() - padding);
         p.z = constrain(p.z, -aq.getDepth()/2 + padding, aq.getDepth()/2 - padding);
