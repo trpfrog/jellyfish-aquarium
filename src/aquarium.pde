@@ -4,7 +4,8 @@ class Aquarium extends Drawable {
     private int aquariumHeight = 100;
     private int aquariumDepth = 100;
     private int frameHeight = 4;
-    protected int waterHeight = (int)(aquariumHeight * 0.8);
+    protected int waterHeight;
+    protected int sandHeight;
 
     ArrayList<AquaticLife> seaObjects = new ArrayList<AquaticLife>();
 
@@ -17,6 +18,7 @@ class Aquarium extends Drawable {
         aquariumHeight = height;
         aquariumDepth = depth;
         waterHeight = (int)(aquariumHeight * 0.8);
+        sandHeight = (int)(aquariumHeight * 0.1);
 
         Seaweed sw = new Seaweed();
         sw.setLocation(0, 0, 0);
@@ -92,5 +94,25 @@ class Aquarium extends Drawable {
                 // popStyle();
             popMatrix();
         }
+    }
+
+    public int getWidth() {
+        return aquariumWidth;
+    }
+
+    public int getHeight() {
+        return aquariumHeight;
+    }
+
+    public int getDepth() {
+        return aquariumDepth;
+    }
+
+    public int getWaterHeight() {
+        return waterHeight;
+    }
+
+    public int getSandHeight() {
+        return sandHeight;
     }
 }
