@@ -160,7 +160,7 @@ class Aquarium extends Drawable {
     }
 
     private void drawSand() {
-        fill(184, 149, 99);
+        fill(158, 125, 86);
         pushMatrix();
             translate(0, sandHeight / 2, 0);
             box(
