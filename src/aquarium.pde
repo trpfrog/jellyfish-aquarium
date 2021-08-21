@@ -20,9 +20,18 @@ class Aquarium extends Drawable {
         waterHeight = (int)(aquariumHeight * 0.85);
         sandHeight = (int)(aquariumHeight * 0.1);
 
-        for(int i = 0; i < 30; i++) {
-            AquaticLife sw = new Seaweed();
-            sw.setLocation(0, 0, 0);
+        for(int i = 0; i < 150; i++) {
+            Seaweed sw = new Seaweed(
+                4 + abs(randomGaussian()) * 2, 25 + randomGaussian() * 3, 0.5, 4, 16000
+            );
+            final int padding = 10;
+            sw.setLocation(
+                random(-aquariumWidth/2 + padding, aquariumWidth/2 - padding),
+                0,
+                random(-aquariumDepth/2 + padding, aquariumDepth/2 - padding)
+            );
+            sw.setColor(color(100, 200 + randomGaussian() * 10, 100, 190));
+            sw.setInitalPhase(randomGaussian());
             seaObjects.add(sw);
         }
 
