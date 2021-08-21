@@ -7,6 +7,8 @@ class Aquarium extends Drawable {
     protected int waterHeight;
     protected int sandHeight;
 
+    private Food food = new Food();
+
     ArrayList<AquaticLife> seaObjects = new ArrayList<AquaticLife>();
     Drawable house, car;
 
@@ -65,6 +67,8 @@ class Aquarium extends Drawable {
                         ((Movable)life).move(this);
                     }
                 }
+                food.draw();
+                food.move(this);
                 drawHouse();
                 drawCar();
             hint(DISABLE_DEPTH_TEST);
@@ -208,17 +212,7 @@ class Aquarium extends Drawable {
         return frameThickness;
     }
 
-    public boolean addFood(int x, int y, int z) {
-        if(this.hasFood()) return false;
-
-        return true;
-    }
-
-    public boolean hasFood() {
-        return this.getFoodLocation() != null;
-    }
-
-    public PVector getFoodLocation() {
-        return null;
+    public Food getFood() {
+        return food;
     }
 }

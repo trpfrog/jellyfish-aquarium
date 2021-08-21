@@ -45,16 +45,25 @@ class CameraWork {
     }
 }
 
-void mousePressed() {
-    cameraWork.onMousePressed();
+void mousePressed(MouseEvent e) {
+    if(e.getButton() == LEFT) {
+        cameraWork.onMousePressed();
+    } else if(e.getButton() == RIGHT) {
+        final int padding = 10;
+        aquarium.getFood().appear(
+            random(-aquarium.getWidth()/2 + padding, aquarium.getWidth()/2 - padding),
+            aquarium.getHeight() * 2,
+            random(-aquarium.getDepth()/2 + padding, aquarium.getDepth()/2 - padding)
+        );
+    }
 }
 
-void mouseDragged() {
-    cameraWork.onDragged();
+void mouseDragged(MouseEvent e) {
+    if(e.getButton() == LEFT) cameraWork.onDragged();
 }
 
-void mouseReleased() {
-    cameraWork.onMouseReleased();
+void mouseReleased(MouseEvent e) {
+    if(e.getButton() == LEFT) cameraWork.onMouseReleased();
 }
 
 void mouseWheel(MouseEvent e) {

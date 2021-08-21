@@ -33,8 +33,9 @@ void drawHowToUse() {
     if(alpha < 0) return;
     fill(255, 255, 255, (int)constrain(alpha, 0, 255));
     final int padding = 40;
-    text("Drag to change the direction of the camera", padding, height - padding - 30);
-    text("Turn the mouse wheel to zoom in/out", padding, height - padding);
+    text("Drag to change the direction of the camera", padding, height - padding - 60);
+    text("Turn the mouse wheel to zoom in/out", padding, height - padding - 30);
+    text("Right click to feed the jellyfish", padding, height - padding);
 }
 
 void drawStand(int standHeight) {

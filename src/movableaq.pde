@@ -6,9 +6,16 @@ abstract class MovableAquaticLife extends AquaticLife implements Movable {
     @Override
     public void move(Aquarium aq) {
         PVector p = this.getLocation();
-        if(aq.hasFood()) {
-            dir = aq.getFoodLocation();
-            dir.sub(p);
+        if(aq.getFood().isValid()) {
+            PVector foodLocation = aq.getFood().getLocation();
+            float xzDist = (float)Math.hypot(
+                foodLocation.x - p.x, foodLocation.z - p.z
+            );
+            // println(xzDist + " " + abs(foodLocation.y - p.y));
+            if(xzDist < 2 && 0 < p.y - foodLocation.y && p.y - foodLocation.y < 15) {
+                aq.getFood().eat();
+            }
+            dir = PVector.sub(foodLocation, p);
         } else if(Math.random() < 0.2) {
             float theta = acos(dir.z);
             float phi = 0;
