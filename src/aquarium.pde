@@ -214,4 +214,12 @@ class Aquarium extends Drawable {
     public Food getFood() {
         return food;
     }
+
+    public void accelerateJellyfish(float amount) {
+        for(AquaticLife life : seaObjects) {
+            if(life instanceof Jellyfish) {
+                ((Jellyfish)life).accelerate(amount);
+            }
+        }
+    }
 }

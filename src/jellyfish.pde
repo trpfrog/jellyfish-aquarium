@@ -94,4 +94,8 @@ class Jellyfish extends MovableAquaticLife {
                 * (0.7 + 0.5 * pow(sin(t / jellyfishPeriod * TWO_PI), 2));
         return a * (y + 0.25 * h) * (y - h);
     }
+
+    public void accelerate(float amount) {
+        super.speed = constrain(speed + amount, 0, 10);
+    }
 }

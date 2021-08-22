@@ -1,7 +1,7 @@
 abstract class MovableAquaticLife extends AquaticLife implements Movable {
 
     private PVector dir = new PVector(0, 1, 0);
-    private float speed = 0.5;
+    protected float speed = 0.3;
 
     @Override
     public void move(Aquarium aq) {
