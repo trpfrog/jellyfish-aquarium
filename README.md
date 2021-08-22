@@ -1,6 +1,6 @@
 # Jellyfish Aquarium
 
-This is a work I created for a visual information processing assignment.
+This is a work I created for a Visual Computing assignment.
 
 ![screenshot](./screenshot.png)
 
