@@ -4,11 +4,11 @@ This is a work I created for a Visual Computing assignment.
 
 ![screenshot](./screenshot.png)
 
-## How to execute
+## Download
 
-1. Download [Processing](https://processing.org/download).
-2. Open the src folder.
-3. Click the execute button.
+Select zip for your operating system.
+
+[https://github.com/TrpFrog/jellyfish-aquarium/releases/](https://github.com/TrpFrog/jellyfish-aquarium/releases/)
 
 ## How to operate
 
