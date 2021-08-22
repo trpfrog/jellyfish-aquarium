@@ -28,7 +28,7 @@ def append_src(to_file, from_file: str):
 
 if __name__ == '__main__':
     project_name = 'viscomp_final'
-    source_folder_name = 'src'
+    source_folder_name = 'JellyfishAquarium'
     src_folder = './' + source_folder_name
     out_folder = './' + project_name
 
