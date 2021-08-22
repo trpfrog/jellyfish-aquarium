@@ -56,24 +56,23 @@ class Aquarium extends Drawable {
     @Override
     public void draw() {
         pushStyle();
-            hint(ENABLE_DEPTH_TEST);
-                drawSand();
-                for(AquaticLife life : seaObjects) {
-                    pushMatrix();
-                        translate(life.getX(), life.getY(), life.getZ());
-                        life.draw();
-                    popMatrix();
-                    if(life instanceof Movable) {
-                        ((Movable)life).move(this);
-                    }
-                }
-                food.draw();
-                food.move(this);
-                drawHouse();
-                drawCar();
             hint(DISABLE_DEPTH_TEST);
             fillWithWater();
             hint(ENABLE_DEPTH_TEST);
+            drawSand();
+            for(AquaticLife life : seaObjects) {
+                pushMatrix();
+                    translate(life.getX(), life.getY(), life.getZ());
+                    life.draw();
+                popMatrix();
+                if(life instanceof Movable) {
+                    ((Movable)life).move(this);
+                }
+            }
+            food.draw();
+            food.move(this);
+            drawHouse();
+            drawCar();
             drawFrame();
         popStyle();
     }
